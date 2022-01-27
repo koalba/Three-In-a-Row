@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Three In A Row | Koalba</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Righteous&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <main id="main" class="main"> 
+
+        <div id="startMenu" class="startMenu">
+            <h1 class="startMenu__h1">Tres en raya</h1>
+            <div class="startMenu__container">
+                <div id="player1" class="player" data-player="1">
+                    <p class="player__name player--1">PLAYER-1</p>
+                    <input id="p1-input" type="text" class="player__input" placeholder="Player-1" maxlength="13">
+                </div>
+                <div id="player2" class="player" data-player="2">
+                    <p class="player__name player--2">PLAYER-2</p>
+                    <input id="p2-input" type="text" class="player__input" placeholder="Player-2" maxlength="13">
+                </div>
+            </div>
+            <div class="winMenu__buttonContainer">
+                <button class="start button" value="3">3x3</button>
+                <button class="start button" value="4">4x4</button>
+                <button class="start button" value="5">5x5</button>   
+            </div>
+        </div>
+
+        <div class="winMenu winMenuP1">
+            <h2 class="winMenu__h2"><span class="player--1">Player-1</span> wins!</h2>
+            <div class="winMenu__buttonContainer">
+                <button class="start button" value="3">3x3</button>
+                <button class="start button" value="4">4x4</button>
+                <button class="start button" value="5">5x5</button>   
+            </div>
+            <button class="restart button">Restart</button>
+        </div>
+
+        <div class="winMenu winMenuP2">
+            <h2 class="winMenu__h2"><span class="player--2">Player-2</span> wins!</h2>
+            <div class="winMenu__buttonContainer">
+                <button class="start button" value="3">3x3</button>
+                <button class="start button" value="4">4x4</button>
+                <button class="start button" value="5">5x5</button>   
+            </div>
+            <button class="restart button">Restart</button>
+        </div>
+
+        <div id="evenMenu" class="evenMenu">
+            <h2 class="evenMenu__h2">It's a tie!</h2>
+            <div class="evenMenu__buttonContainer">
+                <button class="start button" value="3">3x3</button>
+                <button class="start button" value="4">4x4</button>
+                <button class="start button" value="5">5x5</button>   
+            </div>
+            <button class="restart button">Restart</button>
+        </div>
+
+        <div id="playScreen" class="playScreen">
+            <div class="playScreen__container">
+                <p class="playScreen__name player--1">PLAYER-1</p>
+                <p class="playScreen__counter"><span id="p1-counter">0</span> - <span id="p2-counter">0</span></p>
+                <p class="playScreen__name player--2">PLAYER-2</p>
+            </div>
+            <div class="playScreen__tablero">
+
+            </div>
+        </div>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>

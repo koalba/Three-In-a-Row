@@ -1,0 +1,30 @@
+:root {
+  /* ---------- COLOR ---------- */
+
+  --white: white;
+  --black: black;
+
+  --c-main-text: black;
+  --c-main-light: white;
+
+  --c-green: #92fe9d;
+  --c-turq: #32e4c0;
+  --c-blue: #00c9ff;
+  --c-grey: #ebebeb;
+
+  /* ---------- FONT ---------- */
+
+  --ff-main: "Righteous", cursive;
+
+  /* ---------- SPACE ---------- */
+}
+
+// @media (prefers-color-scheme: dark) {
+//   :root {
+//     --white: black;
+//     --black: white;
+
+//     --c-main-text: white;
+//     --c-main-light: black;
+//   }
+// }

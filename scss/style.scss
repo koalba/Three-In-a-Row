@@ -1,0 +1,372 @@
+@import "_variables", "_reset", "_mixin";
+
+.button {
+  position: relative;
+  text-transform: uppercase;
+  font-size: 2.5rem;
+  background: rgba(255, 255, 255, 0);
+  padding: 0.15em 1em;
+  border-radius: 10px;
+  letter-spacing: 1.5px;
+  color: inherit;
+  margin-top: 2rem;
+  cursor: pointer;
+  border: 5px solid currentColor;
+  transition: all 0.5s ease;
+
+  &:hover {
+    padding: 0.15em 2em;
+  }
+
+  &.restart {
+    font-size: 1.5rem;
+    border-radius: 0;
+    padding: 0.1em 0;
+    border: none;
+    border-bottom: 3.5px solid transparent;
+
+    &:hover {
+      border-bottom: 3.5px solid currentColor;
+    }
+  }
+}
+
+.startMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  @include d-flex(column, nowrap, center, center);
+  width: 100%;
+  height: 100vh;
+  background: linear-gradient(329deg, var(--c-blue) 0%, var(--c-green) 100%);
+  z-index: 1;
+  color: white;
+
+  transform: translateY(0);
+  transition: all 1s ease;
+
+  &.hidden {
+    pointer-events: none;
+    transform: translateY(-100%);
+  }
+
+  &__h1 {
+    font-family: var(--ff-sec);
+    font-size: 10rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    color: white;
+  }
+
+  &__container {
+    width: 100%;
+    max-width: 1100px;
+    margin: 2rem auto 0;
+    @include d-flex;
+    justify-content: center;
+  }
+
+  &__button {
+    position: relative;
+    text-transform: uppercase;
+    font-size: 2.5rem;
+    background: rgba(255, 255, 255, 0);
+    padding: 0.15em 1em;
+    border-radius: 10px;
+    letter-spacing: 1.5px;
+    color: white;
+    margin-top: 2rem;
+    cursor: pointer;
+    border: 5px solid currentColor;
+
+    transition: all 0.5s ease;
+
+    &:hover {
+      padding: 0.15em 2em;
+    }
+
+    &::before,
+    &::after {
+      content: "";
+      position: absolute;
+      width: 0;
+      height: 0;
+
+      transition: all 0.5s ease;
+    }
+
+    &::before {
+      top: 0;
+      left: 0;
+      border-top: 0px solid white;
+      border-left: 0px solid white;
+      border-radius: 10px 0px 0px 0px;
+    }
+
+    &::after {
+      bottom: 0;
+      right: 0;
+      border-bottom: 0px solid white;
+      border-right: 0px solid white;
+      border-radius: 0px 0px 10px 0px;
+    }
+
+    &:hover::before,
+    &:hover::after {
+      width: 2rem;
+      height: 2rem;
+    }
+
+    &:hover::before {
+      top: -1.25rem;
+      left: -1.25rem;
+      border-top: 5px solid white;
+      border-left: 5px solid white;
+      border-radius: 20px 0px 0px 0px;
+    }
+
+    &:hover::after {
+      bottom: -1.25rem;
+      right: -1.25rem;
+      border-bottom: 5px solid white;
+      border-right: 5px solid white;
+      border-radius: 0px 0px 20px 0px;
+    }
+  }
+}
+
+.player {
+  position: relative;
+  padding: 1.5rem 1rem 2rem;
+  margin: 1rem;
+  min-width: 400px;
+  color: var(--c-blue);
+  border: 5px solid white;
+  background: var(--c-grey);
+  border-radius: 7px;
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 10px;
+    bottom: 10px;
+    left: 10px;
+    right: 10px;
+    border: 5px solid currentColor;
+    border-radius: 7px;
+    pointer-events: none;
+  }
+
+  &#player2 {
+    color: var(--c-turq);
+  }
+
+  &__name {
+    font-size: 2.1rem;
+    text-align: center;
+    margin-bottom: 0.5rem;
+    letter-spacing: 1.5px;
+  }
+
+  &__input {
+    padding: 0.5em;
+    background: white;
+    border-radius: 5px;
+    margin: 0 auto;
+    color: inherit;
+    border: 5px solid currentColor;
+
+    &::placeholder {
+      color: currentColor;
+      opacity: 0.5;
+    }
+  }
+}
+
+.winMenu,
+.evenMenu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  z-index: 2;
+
+  @include d-flex(column, nowrap, center, center);
+
+  transition: all 1s ease;
+
+  &__h2 {
+    font-size: 8rem;
+    text-transform: uppercase;
+  }
+
+  &__buttonContainer {
+    @include d-flex(row, nowrap, space-between, center);
+    gap: 1rem;
+    margin-top: 4rem;
+  }
+
+  &P1 {
+    color: var(--c-blue);
+    background: linear-gradient(
+      0deg,
+      currentColor 20%,
+      white 20%,
+      white 80%,
+      currentColor 80%
+    );
+    transform: translateX(-100%);
+  }
+
+  &P2 {
+    color: var(--c-turq);
+    background: linear-gradient(
+      0deg,
+      currentColor 20%,
+      white 20%,
+      white 80%,
+      currentColor 80%
+    );
+    transform: translateX(100%);
+  }
+
+  &.active {
+    transform: translateX(0);
+  }
+}
+
+.evenMenu {
+  background: linear-gradient(329deg, var(--c-blue) 0%, var(--c-green) 100%);
+  color: white;
+  transform: translateY(100%);
+
+  &.active {
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideLeft {
+  from {
+    transform: translateX(-100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideTop {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+
+.playScreen {
+  @include d-flex(column, nowrap, flex-start, center);
+  width: 100%;
+  height: 100vh;
+  background: white;
+
+  &__container {
+    width: 100%;
+    padding: 1.5rem 3rem;
+    margin: 0 auto;
+    @include d-flex(row, nowrap, space-between, center);
+  }
+
+  &__tablero {
+    @include d-flex(row, nowrap, center, center);
+    width: 100%;
+    flex-grow: 1;
+    padding-bottom: 5rem;
+  }
+
+  &__name {
+    font-size: 1.75rem;
+    color: var(--c-blue);
+
+    &.player--2 {
+      color: var(--c-turq);
+    }
+  }
+
+  &__counter {
+    font-size: 2.5rem;
+    line-height: 1;
+    color: var(--c-grey);
+
+    #p1-counter {
+      color: var(--c-blue);
+    }
+
+    #p2-counter {
+      color: var(--c-turq);
+    }
+  }
+}
+
+.tablero {
+  position: relative;
+  display: grid;
+  grid-template-rows: repeat(var(--columns, 3), 1fr);
+  gap: calc(2rem / var(--columns, 3));
+  max-width: 450px;
+  width: 100%;
+  margin: 4rem;
+  border-radius: 1px;
+
+  &__row {
+    display: grid;
+    grid-template-columns: repeat(var(--columns, 3), 1fr);
+    gap: calc(2rem / var(--columns, 3));
+  }
+
+  &__celda {
+    width: 100%;
+    aspect-ratio: 1;
+    @include d-flex(row, nowrap, center, center);
+    background: var(--c-grey);
+    border-radius: 7%;
+
+    transition: all 0.5s ease;
+  }
+
+  &.p1-turn &__celda:not(.active):hover {
+    background: var(--c-blue);
+    cursor: pointer;
+  }
+
+  &.p2-turn &__celda:not(.active):hover {
+    background: var(--c-turq);
+    cursor: pointer;
+  }
+}
+
+.ficha {
+  width: 85%;
+  height: 85%;
+  padding: 10%;
+  border-radius: inherit;
+
+  border: calc(1.25rem / var(--columns, 3)) solid currentColor;
+
+  &--j1 {
+    color: var(--c-blue);
+  }
+
+  &--j2 {
+    color: var(--c-turq);
+  }
+}
